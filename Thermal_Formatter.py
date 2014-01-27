@@ -50,6 +50,8 @@ def processAndPrint(text):
       else:
         pass
 
+      printer.setDefault()
+
 output = [
     ['s',   'Hello my son, how are you doing today?']
   , ['b',   'But as the pleasing continues this is my very long message.']
