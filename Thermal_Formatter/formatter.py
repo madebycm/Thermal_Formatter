@@ -37,7 +37,7 @@ def processAndPrint(text):
 
   if not invalid:
     for line in text:
-      prop = line[0]
+      prop = str(line[0]).lower()
       try: 
         line = wrap.fill(line[1])
       except:
