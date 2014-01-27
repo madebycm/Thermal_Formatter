@@ -27,7 +27,7 @@ def processAndPrint(text):
 
   i = 1
   for line in text:
-    if line[0] not in allowed:
+    if str(line[0]).lower() not in allowed:
       print 'Invalid property: %s [line %d]' % (line[0], i)
       invalid = True
       break
