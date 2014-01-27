@@ -4,12 +4,6 @@
 import textwrap
 wrap = textwrap.TextWrapper(width=32)
 
-def hehe():
-  print "hehe"
-
-def MINGO():
-  print "BINGO"
-
 # Mock method, replace with Adafruit_Thermal class
 class printer:
   def setSize(self,size):
