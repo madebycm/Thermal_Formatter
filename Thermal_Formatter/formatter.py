@@ -2,7 +2,7 @@
 # Filename: Thermal_Formatter.py
 
 import textwrap
-wrap = textwrap.TextWrapper(width=32)
+wrap = textwrap.TextWrapper(width=32,break_long_words=True)
 
 from Adafruit_Thermal import *
 
