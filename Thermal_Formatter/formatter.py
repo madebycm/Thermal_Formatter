@@ -23,7 +23,7 @@ def processAndPrint(text):
 
   #@todo
   # determine width of medium and big text
-  allowed = ['s','b','br']
+  allowed = ['s','l','br']
 
   i = 1
   for line in text:
@@ -39,7 +39,7 @@ def processAndPrint(text):
     for line in text:
       prop = line[0]
       try: 
-        line = line[1]
+        line = wrap.fill(line[1])
       except:
         pass
       # text sizing
@@ -49,12 +49,12 @@ def processAndPrint(text):
       elif prop in ['medium','m']:
         printer.setSize('M')
         printer.println(line)
-      elif prop in ['big','b']:
-        printer.setSize('B')
+      elif prop in ['large','l']:
+        printer.setSize('L')
         printer.println(line)
       # other visual elements
       elif prop == 'br':
-        print '-' * 32
+        printer.println('-' * 32) # linebreak
       else:
         pass
 
