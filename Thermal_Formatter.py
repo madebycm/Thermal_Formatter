@@ -10,6 +10,8 @@ class printer:
     pass
   def println(self,line):
     print wrap.fill(line)
+  def setDefault(self):
+    pass
 
 printer = printer()
 
@@ -36,15 +38,17 @@ def processAndPrint(text):
         line = line[1]
       except:
         pass
-      if prop == 'small' or prop == 's':
+      # text sizing
+      if prop in ['small','s']:
         printer.setSize('S')
         printer.println(line)
-      elif prop == 'medium' or prop == 'm':
+      elif prop in ['medium','m']:
         printer.setSize('M')
         printer.println(line)
-      elif prop == 'big' or prop == 'b':
+      elif prop in ['big','b']:
         printer.setSize('B')
         printer.println(line)
+      # other visual elements
       elif prop == 'br':
         print '-' * 32
       else:
