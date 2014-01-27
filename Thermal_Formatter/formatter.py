@@ -22,7 +22,7 @@ def processAndPrint(text):
   allowed = ['s','b','br']
 
   i = 1
-  for line in output:
+  for line in text:
     if line[0] not in allowed:
       print 'Invalid property: %s [line %d]' % (line[0], i)
       invalid = True
@@ -32,7 +32,7 @@ def processAndPrint(text):
       i += 1
 
   if not invalid:
-    for line in output:
+    for line in text:
       prop = line[0]
       try: 
         line = line[1]
