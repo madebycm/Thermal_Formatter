@@ -6,18 +6,20 @@ wrap = textwrap.TextWrapper(width=32,break_long_words=True)
 
 from Adafruit_Thermal import *
 
-# Mock method, replace with Adafruit_Thermal class
-# class printer:
-#   def setSize(self,size):
-#     pass
-#   def println(self,line):
-#     print wrap.fill(line)
-#   def setDefault(self):
-#     pass
+try:
+  printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
+except:
+  #Mock method
+  class printer:
+    def setSize(self,size):
+      pass
+    def println(self,line):
+      print wrap.fill(line)
+    def setDefault(self):
+      pass
 
-# printer = printer()
+  printer = printer()
 
-printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 
 def processAndPrint(text):
 
