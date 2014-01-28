@@ -95,3 +95,5 @@ class Thermal_Formatter:
         printer.println(line)
         # 'n clear
         printer.setDefault()
+
+    printer.feed(4)
