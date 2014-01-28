@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: Thermal-Formatter
+Version: 0.1
+Summary: A python module to prepare output for printing w/ a thermal printer
+Home-page: UNKNOWN
+Author: madebycm
+Author-email: christian.meinhold@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN

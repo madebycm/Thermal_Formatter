@@ -1,0 +1,6 @@
+Thermal_Formatter.py
+setup.py
+Thermal_Formatter.egg-info/PKG-INFO
+Thermal_Formatter.egg-info/SOURCES.txt
+Thermal_Formatter.egg-info/dependency_links.txt
+Thermal_Formatter.egg-info/top_level.txt
