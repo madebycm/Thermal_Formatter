@@ -1,5 +1,8 @@
 #!/usr/bin/python
+
 # Filename: Thermal_Formatter.py
+# Author: madebycm
+# Url: http://madebycm.no
 
 import textwrap
 wrap = textwrap.TextWrapper(width=32,break_long_words=True)
@@ -17,6 +20,8 @@ except:
       print wrap.fill(line)
     def setDefault(self):
       pass
+    def justify(self,pos):
+      pass
 
   printer = printer()
 
@@ -25,12 +30,24 @@ class Thermal_Formatter:
 
     # @todo
     # determine width of medium and big text
-    allowed = ['s','l','br']
+    sizes = ['s','m','l','br']
+    alignments = ['c','r']
+
+    allowed = sizes + alignments
 
     i = 1
     for line in text:
-      if str(line[0]).lower() not in allowed:
-        print 'Invalid property: %s [line %d]' % (line[0], i)
+      prop = line[0].split(':') # split regardless
+      # check if we have an aligment
+      try:
+        if prop[1] and prop[1] not in alignments:
+          print 'Invalid alignment: %s [line %d]' % (prop[1], i)
+          invalid = True
+          break
+      except:
+        pass
+      if str(prop[0]).lower() not in allowed:
+        print 'Invalid property: %s [line %d]' % (prop[0], i)
         invalid = True
         break
       else: 
@@ -39,25 +56,42 @@ class Thermal_Formatter:
 
     if not invalid:
       for line in text:
-        prop = str(line[0]).lower()
+        props = line[0].split(':')
+        size = str(props[0]).lower()
+        try:
+          alignment = str(props[1]).lower()
+        except:
+          alignment = False
         try: 
           line = wrap.fill(line[1])
         except:
           pass
+
         # text sizing
-        if prop in ['small','s']:
+        if size in ['small','s']:
           printer.setSize('S')
-          printer.println(line)
-        elif prop in ['medium','m']:
+
+        elif size in ['medium','m']:
           printer.setSize('M')
-          printer.println(line)
-        elif prop in ['large','l']:
+
+        elif size in ['large','l']:
           printer.setSize('L')
-          printer.println(line)
+
+        # alignments
+        if alignment in ['c', 'center']:
+          printer.justify('C')
+
+        elif alignment in ['r','right']:
+          printer.justify('R')
+
         # other visual elements
-        elif prop == 'br':
-          printer.println('-' * 32) # linebreak
+        if size == 'br':
+          line = '-' * 32 # linebreak
+
         else:
           pass
 
+        # print
+        printer.println(line)
+        # 'n clear
         printer.setDefault()
