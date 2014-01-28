@@ -12,7 +12,8 @@ from Adafruit_Thermal import *
 try:
   printer = Adafruit_Thermal("/dev/ttyAMA0", 19200, timeout=5)
 except:
-  #Mock method
+  
+  # Mock method so we can test code when printer is off-line
   class printer:
     def setSize(self,size):
       pass
@@ -21,6 +22,8 @@ except:
     def setDefault(self):
       pass
     def justify(self,pos):
+      pass
+    def feed(self,length):
       pass
 
   printer = printer()
